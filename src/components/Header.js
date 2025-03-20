@@ -1,9 +1,9 @@
-import NavBar from "./NavBar";
+// import NavBar from "./NavBar";
 
 const Header = () => {
     return (
         <header className="header">
-            <NavBar />
+            <div className="logo">N.J.L.</div>
         </header>
     )
 }
