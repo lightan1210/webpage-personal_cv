@@ -62,17 +62,17 @@ $color5: #15193c; // Use as the text color for dark-on-light designs, or as the 
 .home {
   
   > .container {
-    
     > h1 {
       color: $color5;
       text-align: center;
-      text-shadow: 0 1px 1px $color5;
     }
     
     > .projects {
+      counter-reset: li;
       display: grid;
       gap: 8px;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       height: 100%;
       list-style-type: none;
       margin: auto;
@@ -80,7 +80,9 @@ $color5: #15193c; // Use as the text color for dark-on-light designs, or as the 
       
       > .project {
         border-radius: 4px;
-        height: 150px;
+        min-height: 150px;
+        height: 100%;
+        
         
         > h1 {
           background-color: $color5;
@@ -93,20 +95,42 @@ $color5: #15193c; // Use as the text color for dark-on-light designs, or as the 
           text-align: center;
           width: 100%;
         }
+        
+        &:nth-child(10n + 1),
+        &:nth-child(10n + 8) {
+          
+          background-color: $color3;
+          box-shadow: 0 0 5px $color3;
+          grid-column: span 2;
+          grid-row: span 2;
+          
+          > h1 {
+            box-shadow: 0 1px 2px $color5;
+          }
+          
+          &:is(:nth-last-child(2)) {
+            grid-column: span 1;
+            grid-row: span 1;
+          }
+        }
+        
+        &:nth-child(10n + 2),
+        &:nth-child(10n + 5),
+        &:nth-child(10n + 7),
+        &:nth-child(10n + 9) {
+          background-color: $color2;
+        }
+        
+        &:nth-child(10n + 3),
+        &:nth-child(10n + 4),
+        &:nth-child(10n + 6),
+        &:nth-child(10n) {
+          background-color: $color4;
+        }
       }
       
-      > .project:nth-child(4n) {
-        background-color: $color2;
-        box-shadow: 0 0 5px $color5;
-      }
       
-      > .project:nth-child(4n + 1), > .project:nth-child(4n + 3) {
-        background-color: $color3;
-      }
       
-      > .project:nth-child(4n + 2) {
-        background-color: $color4;
-      }
     }
   }
 }
